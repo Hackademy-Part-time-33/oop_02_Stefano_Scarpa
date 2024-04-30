@@ -74,7 +74,7 @@ $myLocation->location();
 class Vertebrates {
 
     public function __construct (){
-        $this -> print("sono un vertebrato \n");
+        $this -> print("vertebrato");
     }
     protected function print($type){
         echo "sono un animale $type \n";
@@ -138,7 +138,7 @@ class Reptiles extends coldBlooded {
 class Anphibias extends coldBlooded {
     public function __construct(){
         parent::__construct();
-        $this -> type('anfibio \n');
+        $this -> type('anfibio');
     }
     protected function type ($type){
         echo "sono un $type \n";
@@ -148,3 +148,36 @@ class Anphibias extends coldBlooded {
 $magicarp = new Fish();
 $aquila = new Bird();
 
+// Traccia 3 
+
+class Car {
+    protected $targa;
+    private $num_telaio;
+
+    public function __construct($targa, $num_telaio){
+        $this -> targa = $targa;
+        $this -> num_telaio = $num_telaio;
+    }
+    protected function telaio(){
+        return $this->num_telaio;
+    }
+}
+    
+class Fiat extends Car {
+    protected $nome;
+    protected $license;
+    protected $color;
+
+    public function __construct($targa, $num_telaio, $nome, $color){
+        parent::__construct($targa, $num_telaio);
+        $this -> nome = $nome;
+        $this -> color = $color;
+        $this -> info();
+    }
+
+    private function info(){
+        echo "L'auto è un {$this->nome} di colore {$this->color}, targata {$this->targa} con numero di telaio {$this->telaio()}";
+    }
+  }
+
+  $car = new Fiat("ND 123 OJ", "54321", "Ford", "nera");
